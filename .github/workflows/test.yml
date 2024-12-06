@@ -1,0 +1,25 @@
+name: Node CI Workflow
+
+on:
+  pull_request:
+    branches:
+      - main
+  push:
+    branches:
+      - main
+
+defaults:
+  run:
+    shell: bash
+    working-directory: ./
+
+jobs:
+  test:
+    name: Run unit tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Dependencies
+        run: npm install
+      - name: Run Tests
+        run: npm test
